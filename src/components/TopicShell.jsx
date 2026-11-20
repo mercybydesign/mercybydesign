@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { TOPICS } from '../studies/registry';
 import { ArticleView } from './ArticleView';
 
@@ -58,7 +58,9 @@ export function TopicShell({ topic, activeStudyId, onSelectStudy }) {
       {activeStudy.article ? (
         <ArticleView article={activeStudy.article} />
       ) : (
-        <StudyComponent />
+        <Suspense fallback={<div className="directory-empty">Loading study…</div>}>
+          <StudyComponent />
+        </Suspense>
       )}
 
       <footer className="topic-pager" aria-label="Study navigation">

@@ -8,15 +8,17 @@
 // - To add a new Islamic principle / category:
 //     Append a new topic object to TOPICS below.
 
-import { TawhidModule } from '../components/TawhidModule';
-import { AkhirahModule } from '../components/AkhirahModule';
-import { SalahModule } from '../components/SalahModule';
-import { ZakatModule } from '../components/ZakatModule';
-import { SawmModule } from '../components/SawmModule';
-import { HajjModule } from '../components/HajjModule';
-import { RibaModule } from '../components/RibaModule';
-import { WaqfModule } from '../components/WaqfModule';
-import { CommunityModule } from '../components/CommunityModule';
+import { lazy } from 'react';
+
+const TawhidModule = lazy(() => import('../components/TawhidModule').then((m) => ({ default: m.TawhidModule })));
+const AkhirahModule = lazy(() => import('../components/AkhirahModule').then((m) => ({ default: m.AkhirahModule })));
+const SalahModule = lazy(() => import('../components/SalahModule').then((m) => ({ default: m.SalahModule })));
+const ZakatModule = lazy(() => import('../components/ZakatModule').then((m) => ({ default: m.ZakatModule })));
+const SawmModule = lazy(() => import('../components/SawmModule').then((m) => ({ default: m.SawmModule })));
+const HajjModule = lazy(() => import('../components/HajjModule').then((m) => ({ default: m.HajjModule })));
+const RibaModule = lazy(() => import('../components/RibaModule').then((m) => ({ default: m.RibaModule })));
+const WaqfModule = lazy(() => import('../components/WaqfModule').then((m) => ({ default: m.WaqfModule })));
+const CommunityModule = lazy(() => import('../components/CommunityModule').then((m) => ({ default: m.CommunityModule })));
 
 export const TOPICS = [
   {
