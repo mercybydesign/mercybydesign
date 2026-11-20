@@ -97,7 +97,7 @@ export const TOPICS = [
     path: '/zakat',
     title: 'Zakat',
     subtitle: 'Wealth Circulation',
-    category: 'Society & Economy',
+    category: 'Economy & Finance',
     scope: 'Society & Wealth',
     verse: '“So that wealth does not merely circulate among the rich among you.” (59:7)',
     benefits: {
@@ -143,7 +143,7 @@ export const TOPICS = [
     path: '/hajj',
     title: 'Hajj',
     subtitle: 'Global Pilgrimage & Equality',
-    category: 'Society & Economy',
+    category: 'Community & Society',
     scope: 'Equality Across Nations',
     verse: '“We made you peoples and tribes that you may know one another.” (49:13)',
     benefits: {
@@ -166,7 +166,7 @@ export const TOPICS = [
     path: '/riba',
     title: 'No Riba',
     subtitle: 'Interest-Free Finance',
-    category: 'Finance',
+    category: 'Economy & Finance',
     scope: 'Interest-Free Finance',
     verse: '“If someone is in hardship, then let there be postponement until a time of ease.” (2:280)',
     benefits: {
@@ -192,7 +192,7 @@ export const TOPICS = [
     path: '/waqf',
     title: 'Waqf',
     subtitle: 'Perpetual Endowments',
-    category: 'Society & Economy',
+    category: 'Economy & Finance',
     scope: 'Perpetual Endowments',
     verse: '“Ongoing charity (Sadaqah Jariyah) whose benefit continues.” (Sahih Muslim 1631)',
     benefits: {
@@ -215,7 +215,7 @@ export const TOPICS = [
     path: '/community',
     title: 'Community',
     subtitle: 'Silat al-Rahim & Neighbor Rights',
-    category: 'Family & Neighbors',
+    category: 'Community & Society',
     scope: 'Family & Neighbors',
     verse: '“He is not a believer whose stomach is filled while his neighbor goes hungry.” (Hadith)',
     benefits: {
