@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { MethodologyDrawer } from './MethodologyDrawer';
 
 const HOUSEHOLD_COUNT = 20;
 
@@ -184,6 +185,25 @@ export function CommunityModule() {
           </section>
         </main>
       </div>
+
+      <MethodologyDrawer
+        modelType="conceptual"
+        summary="20-household network graph illustrating how kinship ties (Silat al-Rahim) and neighbor rights absorb localized financial or personal shocks."
+        assumptions={[
+          'Each node represents a household with a stylized resilience buffer; active kinship/neighbor links allow surplus households to buffer adjacent nodes in distress.',
+          'Designed to visualize social-capital network effects rather than predict a specific city’s empirical welfare statistics.',
+        ]}
+        sources={[
+          {
+            label: 'Sahih al-Bukhari 6014 & 5986',
+            detail: 'Neighbor rights (“Jibril kept advising me regarding the neighbor…”) and upholding ties of kinship (Silat al-Rahim).',
+          },
+          {
+            label: 'Social Capital & Mutual Aid',
+            detail: 'Research on neighborhood cohesion and informal risk-sharing networks shows faster recovery from household shocks when local trust is high.',
+          },
+        ]}
+      />
     </div>
   );
 }

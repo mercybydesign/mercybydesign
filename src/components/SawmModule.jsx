@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { MethodologyDrawer } from './MethodologyDrawer';
 
 const FAST_STAGES = [
   { start: 0, end: 4, title: 'Fed State & Digestion', desc: 'Blood glucose rises after Suhoor; insulin stores energy as glycogen.' },
@@ -155,6 +156,25 @@ export function SawmModule() {
           </section>
         </main>
       </div>
+
+      <MethodologyDrawer
+        modelType="conceptual"
+        summary="Educational timeline mapping typical human metabolic shifts during a 12–18 hour daily fast alongside a 30-day habit tracker."
+        assumptions={[
+          'Metabolic phase timings (glycogen depletion, lipolysis, early autophagy signaling) are population averages and vary by prior meal composition, activity level, and individual metabolism.',
+          'This study is for educational reflection only and is not medical advice; Islam explicitly exempts the ill, travelers, pregnant/nursing mothers, and the elderly (Qur’an 2:184–185).',
+        ]}
+        sources={[
+          {
+            label: 'Qur’an 2:183–185',
+            detail: 'Prescription of fasting to cultivate self-restraint (Taqwa), with explicit mercy and exemptions for hardship.',
+          },
+          {
+            label: 'de Cabo & Mattson (NEJM, 2019)',
+            detail: '“Effects of Intermittent Fasting on Health, Aging, and Disease” — overview of metabolic switching from glucose to ketone bodies.',
+          },
+        ]}
+      />
     </div>
   );
 }

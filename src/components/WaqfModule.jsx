@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { MethodologyDrawer } from './MethodologyDrawer';
 import { formatCurrency } from '../simulation/zakatEngine';
 
 export function WaqfModule() {
@@ -228,6 +229,25 @@ export function WaqfModule() {
           </section>
         </main>
       </div>
+
+      <MethodologyDrawer
+        modelType="conceptual"
+        summary="Long-horizon endowment compounding model contrasting a one-time charitable gift with a perpetual Waqf that preserves principal."
+        assumptions={[
+          'Assumes constant real annual yield and fixed payout/reinvestment ratios over the 10–100 year horizon; real markets experience volatility and management fees.',
+          'Public-goods equivalents (scholarships, clinic visits) are illustrative unit-cost conversions to make dollar totals tangible.',
+        ]}
+        sources={[
+          {
+            label: 'Sahih Muslim 1631',
+            detail: 'The principle of Sadaqah Jariyah (ongoing charity) whose benefit continues across generations.',
+          },
+          {
+            label: 'Historical Waqf Institutions',
+            detail: 'Classical endowments funded universities (e.g., Al-Qarawiyyin, Al-Azhar), hospitals, water fountains, and public infrastructure for centuries.',
+          },
+        ]}
+      />
     </div>
   );
 }

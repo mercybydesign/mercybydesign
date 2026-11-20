@@ -8,10 +8,10 @@
 - **Typography:** `Newsreader` (editorial serif for headlines & verses), `DM Sans` (body/UI), `JetBrains Mono` (tabular numbers)
 - **Logo:** Geometric 8-pointed *Rub el Hizb* SVG mark (`public/favicon.svg` & `src/components/Logo.jsx`)
 
-## Live Modules (All 6 Sections + Community Pages)
+## Live Modules (All 6 Studies + About)
 - **Overview** (`src/components/HomePage.jsx`): Editorial hero, 4-level impact strip (Individual, Family, Community, Society), and full platform blueprint.
 - **01. Salah** (`src/components/SalahModule.jsx`): 24-hour stress & cortisol recovery curve comparing an unbroken modern workday against 5 daily prayer resets (*Fajr, Dhuhr, Asr, Maghrib, Isha*).
-- **02. Zakat** (`src/simulation/zakatEngine.js`, `src/components/HumanVisuals.jsx`, `src/components/PersonalZakat.jsx`, `src/components/WisdomBanner.jsx`, `src/components/Charts.jsx`):
+- **02. Zakat** (`src/components/ZakatModule.jsx`, `src/simulation/zakatEngine.js`, `src/components/HumanVisuals.jsx`, `src/components/PersonalZakat.jsx`, `src/components/WisdomBanner.jsx`, `src/components/Charts.jsx`):
   - Classical Fiqh al-Zakah engine using the **85g Gold Nisab** standard, **Hawl** (1 year), **2.5%** on net zakatable wealth, inflation/CPI modeling, and *Asnaf* cascade redistribution.
   - Multi-region scope: **Entire World**, **United States**, **United Kingdom**, **India**, **Indonesia**.
   - 4 focused sub-tabs: *Visual Impact (100 Human Silhouettes + Flow)*, *What Does My Zakat Do?*, *Zakat vs. 5% Income Tax*, and *Economic Charts & Fiqh Rules*.
@@ -19,13 +19,16 @@
 - **04. No Riba** (`src/components/RibaModule.jsx`): Compound interest (*Riba*) vs. *Qard Hasan* (0% + hardship respite per Qur'an 2:280).
 - **05. Waqf** (`src/components/WaqfModule.jsx`): 10–100 year generational perpetual endowment compounder.
 - **06. Community** (`src/components/CommunityModule.jsx`): 20-household *Silat al-Rahim* & neighbor-rights mutual-aid network graph.
-- **Ideas & Voting** (`src/components/IdeasPage.jsx`): Community roadmap where visitors upvote and submit new simulator ideas (currently persisted in `localStorage`; ready for Supabase/Firebase).
 - **About & Contact** (`src/components/AboutPage.jsx`): Mission, creator bio, and contact form.
+
+## Open Source & Contributing
+MercyByDesign is open source so anyone can inspect the math, verify Fiqh rules, contribute country datasets, or help translate the platform. See [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
 
 ## Local Development & Deployment
 ```powershell
 npm install
 npm run dev       # http://localhost:5173
+npm test          # Run simulation unit tests
 npm run build     # Outputs production bundle to dist/
 ```
 

@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { MethodologyDrawer } from './MethodologyDrawer';
 
 const PRAYERS = [
   { name: 'Fajr', hour: 5.5, time: '5:30 AM', benefit: 'Early circadian anchor, quiet intention, lowers morning anxiety before screens.' },
@@ -225,6 +226,30 @@ export function SalahModule() {
           </section>
         </main>
       </div>
+
+      <MethodologyDrawer
+        modelType="conceptual"
+        summary="Stylized 24-hour stress curve illustrating how spaced meditative pauses interrupt sympathetic nervous system buildup."
+        assumptions={[
+          'Stress index (0–100) is an illustrative heuristic, not a direct clinical cortisol assay; individual stress responses vary widely.',
+          'Prayer times (Fajr through Isha) are fixed to an equinox-like schedule for clarity; real prayer times shift seasonally by latitude.',
+          'The recovery drop scales with self-reported mindfulness (Khushu) to reflect the difference between rushed and attentive prayer.',
+        ]}
+        sources={[
+          {
+            label: 'Qur’an 13:28 & 4:103',
+            detail: 'Remembrance of Allah bringing tranquility to hearts, and prayer prescribed at fixed times.',
+          },
+          {
+            label: 'Mindfulness & Cortisol Literature',
+            detail: 'Brief, recurring mindfulness and slow-breathing breaks are associated with lower perceived stress and improved parasympathetic recovery (e.g., Pascoe et al., J. Psychiatr. Res. 2017).',
+          },
+          {
+            label: 'Circadian Anchor Research',
+            detail: 'Consistent early-morning wake/light exposure and evening wind-down support circadian alignment and sleep quality.',
+          },
+        ]}
+      />
     </div>
   );
 }

@@ -1,119 +1,47 @@
-import React from 'react';
-
-const SECTIONS = [
-  {
-    id: 'salah',
-    num: '01',
-    title: 'Salah — 5 Daily Prayers',
-    category: 'Individual Mind & Body',
-    status: 'live',
-    verse: '“Verily, in the remembrance of Allah do hearts find rest.” (13:28)',
-    benefits: {
-      Individual: 'Resets cortisol, restores focus, and anchors sleep.',
-      Community: 'Builds daily neighborhood unity through Jama’ah.',
-      Society: 'Cultivates mindfulness, discipline, and humility.',
-    },
-    simulators: [
-      { name: '24-Hour Stress & Recovery Curve', live: true },
-      { name: 'Circadian Rhythm & Sleep Anchor', live: false },
-      { name: 'Congregational (Jama’ah) Community Network', live: false },
-    ],
-  },
-  {
-    id: 'zakat',
-    num: '02',
-    title: 'Zakat — Wealth Circulation',
-    category: 'Society & Economy',
-    status: 'live',
-    verse: '“So that wealth does not merely circulate among the rich among you.” (59:7)',
-    benefits: {
-      Individual: 'Purifies wealth from greed and nurtures gratitude.',
-      Community: 'Turns recipients into self-reliant contributors.',
-      Society: 'Eradicates extreme poverty and shrinks wealth inequality.',
-    },
-    simulators: [
-      { name: 'Global & Country 30-Year Macro Model', live: true },
-      { name: 'Personal Zakat Multiplier ("What My Zakat Does")', live: true },
-      { name: 'Top-1% / Billionaire Impact Spotlight', live: false },
-    ],
-  },
-  {
-    id: 'sawm',
-    num: '03',
-    title: 'Sawm — Fasting & Ramadan',
-    category: 'Health & Self-Mastery',
-    status: 'live',
-    verse: '“Fasting has been prescribed for you… that you may attain mindfulness.” (2:183)',
-    benefits: {
-      Individual: 'Triggers metabolic renewal, insulin sensitivity, and self-control.',
-      Community: 'Sparks the largest annual wave of global charity and shared meals.',
-      Society: 'Builds deep empathy for the hungry and reduces overconsumption.',
-    },
-    simulators: [
-      { name: '24-Hour & 30-Day Metabolic / Autophagy Timeline', live: true },
-      { name: 'Global Ramadan Charity & Food-Security Surge', live: false },
-    ],
-  },
-  {
-    id: 'riba',
-    num: '04',
-    title: 'No Riba — Interest-Free Finance',
-    category: 'Finance & Justice',
-    status: 'live',
-    verse: '“If someone is in hardship, then let there be postponement until a time of ease.” (2:280)',
-    benefits: {
-      Individual: 'Protects families from compounding debt traps.',
-      Community: 'Aligns lenders and borrowers through risk-sharing.',
-      Society: 'Prevents wealth extraction and financial crises.',
-    },
-    simulators: [
-      { name: 'Compound Riba vs. Qard Hasan Debt Simulator', live: true },
-      { name: 'Small Business Risk-Sharing (Mudarabah)', live: false },
-      { name: 'National Debt & Inflation Stress Test', live: false },
-    ],
-  },
-  {
-    id: 'waqf',
-    num: '05',
-    title: 'Waqf — Perpetual Endowments',
-    category: 'Public Goods & Legacy',
-    status: 'live',
-    verse: '“Ongoing charity (Sadaqah Jariyah) whose benefit continues.” (Hadith)',
-    benefits: {
-      Individual: 'Leaves a permanent legacy of benefit across generations.',
-      Community: 'Funds free schools, hospitals, and clean water locally.',
-      Society: 'Creates debt-free public infrastructure independent of taxation.',
-    },
-    simulators: [
-      { name: '100-Year Generational Endowment Compounder', live: true },
-      { name: 'Community Hospital & Education Funding Model', live: true },
-    ],
-  },
-  {
-    id: 'community',
-    num: '06',
-    title: 'Silat al-Rahim & Neighbor Rights',
-    category: 'Family & Community',
-    status: 'live',
-    verse: '“He is not a believer whose stomach is filled while his neighbor goes hungry.” (Hadith)',
-    benefits: {
-      Individual: 'Protects against loneliness, anxiety, and isolation.',
-      Community: 'Creates an informal safety net on every street.',
-      Society: 'Strengthens social trust and intergenerational care.',
-    },
-    simulators: [
-      { name: 'Social Isolation & Mutual-Aid Network Graph', live: true },
-      { name: 'Neighborhood Food & Crisis Resilience Model', live: true },
-    ],
-  },
-];
+import React, { useState, useMemo } from 'react';
+import { TOPICS } from '../studies/registry';
 
 export function HomePage({ onSelectModule }) {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [query, setQuery] = useState('');
+
+  const categories = useMemo(
+    () => ['All', ...Array.from(new Set(TOPICS.map((t) => t.category)))],
+    []
+  );
+
+  const totalStudies = useMemo(
+    () => TOPICS.reduce((sum, t) => sum + t.studies.length, 0),
+    []
+  );
+
+  const filteredTopics = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return TOPICS.filter((topic) => {
+      if (selectedCategory !== 'All' && topic.category !== selectedCategory) {
+        return false;
+      }
+      if (!q) return true;
+      const haystack = [
+        topic.title,
+        topic.subtitle,
+        topic.category,
+        topic.scope,
+        topic.verse,
+        ...topic.studies.map((s) => s.title),
+        ...(topic.plannedStudies || []),
+      ]
+        .join(' ')
+        .toLowerCase();
+      return haystack.includes(q);
+    });
+  }, [selectedCategory, query]);
+
   return (
     <div className="home-wrap">
       {/* Hero */}
       <section className="hero-card">
-        <span className="wisdom-eyebrow">INTERACTIVE ISLAMIC WISDOM LAB</span>
+        <span className="wisdom-eyebrow">OPEN-SOURCE INTERACTIVE ISLAMIC WISDOM LAB</span>
         <h2 className="hero-title">
           See How What Allah Prescribed Benefits <span className="hero-accent">All of Humanity</span>
         </h2>
@@ -143,69 +71,115 @@ export function HomePage({ onSelectModule }) {
         </div>
       </section>
 
-      {/* Blueprint Grid */}
+      {/* Filterable Studies Directory */}
       <section className="blueprint-section">
         <div className="blueprint-header">
           <div>
-            <h2>Platform Blueprint — All Sections</h2>
-            <p className="subtitle">Each section combines multi-level benefits with its own suite of interactive simulators.</p>
+            <h2>Studies Directory</h2>
+            <p className="subtitle">
+              Browse by Islamic principle or category. Each principle can host multiple independent open-source studies.
+            </p>
           </div>
-          <span className="blueprint-count">All 6 Sections Live</span>
+          <span className="blueprint-count">
+            {TOPICS.length} Principles • {totalStudies} Live {totalStudies === 1 ? 'Study' : 'Studies'}
+          </span>
         </div>
 
-        <div className="blueprint-grid">
-          {SECTIONS.map((sec) => {
-            const isLive = sec.status === 'live';
-            return (
-              <article
-                key={sec.id}
-                className={`bp-card ${isLive ? 'is-live' : 'is-planned'}`}
-                onClick={() => isLive && onSelectModule(sec.id)}
+        <div className="directory-controls">
+          <div className="region-pills" role="tablist" aria-label="Filter by category">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                role="tab"
+                aria-selected={selectedCategory === cat}
+                className={`region-pill ${selectedCategory === cat ? 'active' : ''}`}
+                onClick={() => setSelectedCategory(cat)}
               >
+                {cat}
+              </button>
+            ))}
+          </div>
+          <input
+            type="search"
+            className="directory-search"
+            placeholder="Search principles or studies..."
+            aria-label="Search principles or studies"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
+
+        {filteredTopics.length === 0 ? (
+          <div className="directory-empty">
+            No principles or studies match “{query}”.{' '}
+            <button
+              type="button"
+              className="secondary-btn"
+              onClick={() => {
+                setSelectedCategory('All');
+                setQuery('');
+              }}
+            >
+              Reset filters
+            </button>
+          </div>
+        ) : (
+          <div className="blueprint-grid">
+            {filteredTopics.map((topic) => (
+              <article key={topic.id} className="bp-card live">
                 <div className="bp-top">
-                  <span className="bp-num">{sec.num} • {sec.category}</span>
-                  <span className={`bp-status ${isLive ? 'live' : 'planned'}`}>
-                    {isLive ? '● Live' : 'Blueprint'}
+                  <span className="bp-num">{topic.num}</span>
+                  <span className="bp-cat">{topic.category}</span>
+                  <span className="bp-status live">
+                    {topic.studies.length} Live
                   </span>
                 </div>
 
-                <h3>{sec.title}</h3>
-                <p className="bp-verse">{sec.verse}</p>
+                <h3>
+                  {topic.title} — {topic.subtitle}
+                </h3>
+                <p className="bp-verse">{topic.verse}</p>
 
                 <div className="bp-benefits">
-                  {Object.entries(sec.benefits).map(([level, text]) => (
-                    <div className="bp-ben-row" key={level}>
+                  {Object.entries(topic.benefits).map(([level, text]) => (
+                    <div key={level} className="bp-benefit-row">
                       <strong>{level}:</strong> <span>{text}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="bp-sims">
-                  <span className="bp-sims-label">Simulators in this section:</span>
+                  <span className="bp-sims-label">Interactive Studies</span>
                   <ul>
-                    {sec.simulators.map((s) => (
-                      <li key={s.name} className={s.live ? 'sim-live' : 'sim-soon'}>
-                        {s.live ? '✓' : '○'} {s.name}
+                    {topic.studies.map((study) => (
+                      <li key={study.id} className="sim-live">
+                        <button
+                          type="button"
+                          className="study-link-btn"
+                          onClick={() => onSelectModule(topic.id, study.id)}
+                        >
+                          ● {study.title} →
+                        </button>
+                      </li>
+                    ))}
+                    {(topic.plannedStudies || []).map((name) => (
+                      <li key={name} className="sim-planned">
+                        ○ {name} <em>(open to contribute)</em>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {isLive && (
-                  <button
-                    className="bp-open-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onSelectModule(sec.id);
-                    }}
-                  >
-                    Open {sec.title.split(' — ')[0]} Section →
-                  </button>
-                )}
+                <button
+                  className="primary-btn bp-cta"
+                  onClick={() => onSelectModule(topic.id)}
+                >
+                  Open {topic.title} →
+                </button>
               </article>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );

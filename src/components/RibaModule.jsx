@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { MethodologyDrawer } from './MethodologyDrawer';
 import { formatCurrency } from '../simulation/zakatEngine';
 
 export function RibaModule() {
@@ -275,6 +276,26 @@ export function RibaModule() {
           </section>
         </main>
       </div>
+
+      <MethodologyDrawer
+        modelType="conceptual"
+        summary="Deterministic amortization comparison between compound interest (Riba) and an interest-free benevolent loan (Qard Hasan) with hardship respite."
+        assumptions={[
+          'Uses standard annual compounding for the interest-bearing loan and 0% principal-only repayment for Qard Hasan.',
+          'During the selected hardship year, the interest-bearing loan continues accruing interest/penalties, whereas Qard Hasan pauses repayment without penalty per Qur’an 2:280.',
+          'Does not model lender opportunity cost or commercial risk-sharing alternatives (Mudarabah / Musharakah), which Islamic finance uses for productive business investment.',
+        ]}
+        sources={[
+          {
+            label: 'Qur’an 2:275–280',
+            detail: 'Prohibition of Riba, permission of trade, and the mandate to grant respite to a debtor in financial hardship.',
+          },
+          {
+            label: 'Standard Amortization Math',
+            detail: 'Compound interest accumulation formula compared against linear principal reduction.',
+          },
+        ]}
+      />
     </div>
   );
 }
