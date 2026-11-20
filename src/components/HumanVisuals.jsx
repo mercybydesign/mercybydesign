@@ -91,9 +91,9 @@ export function HumanSocietyGrid({ zakatSnap, baselineSnap, region }) {
             <div className="panel-title-row">
               <span className="badge emerald">With Universal Zakat</span>
               <span className="panel-stats">
-                <strong style={{ color: '#f43f5e' }}>{zPov}</strong> in poverty •{' '}
+                <strong style={{ color: '#b54534' }}>{zPov}</strong> in poverty •{' '}
                 <strong style={{ color: '#f59e0b' }}>{zNisab}</strong> below Nisab •{' '}
-                <strong style={{ color: '#10b981' }}>{100 - zPov - zNisab}</strong> above Nisab
+                <strong style={{ color: '#1b4332' }}>{100 - zPov - zNisab}</strong> above Nisab
               </span>
             </div>
             <div className="people-grid">
@@ -111,9 +111,9 @@ export function HumanSocietyGrid({ zakatSnap, baselineSnap, region }) {
             <div className="panel-title-row">
               <span className="badge slate">Baseline (No Zakat)</span>
               <span className="panel-stats">
-                <strong style={{ color: '#f43f5e' }}>{bPov}</strong> in poverty •{' '}
+                <strong style={{ color: '#b54534' }}>{bPov}</strong> in poverty •{' '}
                 <strong style={{ color: '#f59e0b' }}>{bNisab}</strong> below Nisab •{' '}
-                <strong style={{ color: '#10b981' }}>{100 - bPov - bNisab}</strong> above Nisab
+                <strong style={{ color: '#1b4332' }}>{100 - bPov - bNisab}</strong> above Nisab
               </span>
             </div>
             <div className="people-grid">
@@ -133,9 +133,9 @@ export function HumanSocietyGrid({ zakatSnap, baselineSnap, region }) {
 export function ZakatFlowGraphic({ zakatSnap, region }) {
   const total = zakatSnap.totalZakatCollected || 0;
   const flows = [
-    { label: 'Al-Fuqara (Poverty Relief)', amount: zakatSnap.fuqaraDistributed || 0, color: '#f43f5e' },
+    { label: 'Al-Fuqara (Poverty Relief)', amount: zakatSnap.fuqaraDistributed || 0, color: '#b54534' },
     { label: 'Al-Masakin (Below Nisab)', amount: zakatSnap.masakinDistributed || 0, color: '#f59e0b' },
-    { label: 'Al-Gharimin (Debt Relief)', amount: zakatSnap.ghariminDistributed || 0, color: '#38bdf8' },
+    { label: 'Al-Gharimin (Debt Relief)', amount: zakatSnap.ghariminDistributed || 0, color: '#3d5a80' },
     { label: 'Fi Sabilillah / Community Surplus', amount: zakatSnap.surplusPublicPool || 0, color: '#a855f7' },
   ];
 
@@ -151,8 +151,8 @@ export function ZakatFlowGraphic({ zakatSnap, region }) {
         <div className="flow-node payers">
           <div className="node-icons">
             <PersonIcon color="#c084fc" glow />
-            <PersonIcon color="#10b981" />
-            <PersonIcon color="#10b981" />
+            <PersonIcon color="#1b4332" />
+            <PersonIcon color="#1b4332" />
           </div>
           <div className="node-title">Eligible Payers</div>
           <div className="node-metric">{zakatSnap.payingRate.toFixed(1)}% of {region.shortName}</div>

@@ -173,10 +173,10 @@ export function SalahModule() {
               <h3>24-Hour Stress &amp; Recovery Curve (5 AM – 11 PM)</h3>
               <div className="chart-legend">
                 <span className="legend-item">
-                  <span className="dot" style={{ background: '#10b981' }} /> With 5 Daily Prayers
+                  <span className="dot" style={{ background: '#1b4332' }} /> With 5 Daily Prayers
                 </span>
                 <span className="legend-item">
-                  <span className="dot" style={{ background: '#f43f5e' }} /> Unbroken Workday
+                  <span className="dot" style={{ background: '#b54534' }} /> Unbroken Workday
                 </span>
               </div>
             </div>
@@ -188,7 +188,7 @@ export function SalahModule() {
                     x2={width - pad.right}
                     y1={yScale(v)}
                     y2={yScale(v)}
-                    stroke="rgba(148,163,184,0.14)"
+                    stroke="rgba(100,95,85,0.15)"
                     strokeDasharray="3 3"
                   />
                   <text x={pad.left - 8} y={yScale(v) + 4} textAnchor="end" className="axis-label">
@@ -208,14 +208,14 @@ export function SalahModule() {
                     stroke="rgba(16,185,129,0.35)"
                     strokeDasharray="3 3"
                   />
-                  <text x={xScale(p.hour)} y={pad.top - 6} textAnchor="middle" className="axis-label" style={{ fill: '#10b981', fontWeight: 600 }}>
+                  <text x={xScale(p.hour)} y={pad.top - 6} textAnchor="middle" className="axis-label" style={{ fill: '#1b4332', fontWeight: 600 }}>
                     {p.name}
                   </text>
                 </g>
               ))}
 
-              <path d={noPath} fill="none" stroke="#f43f5e" strokeWidth="2.4" strokeDasharray="5 4" />
-              <path d={withPath} fill="none" stroke="#10b981" strokeWidth="2.8" />
+              <path d={noPath} fill="none" stroke="#b54534" strokeWidth="2.4" strokeDasharray="5 4" />
+              <path d={withPath} fill="none" stroke="#1b4332" strokeWidth="2.8" />
 
               {[6, 12, 18, 22].map((hr) => (
                 <text key={hr} x={xScale(hr)} y={height - 6} textAnchor="middle" className="axis-label">

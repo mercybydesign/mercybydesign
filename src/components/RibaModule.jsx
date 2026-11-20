@@ -205,14 +205,14 @@ export function RibaModule() {
             </div>
             <div className="kpi-card">
               <span className="kpi-label">Riba Remaining Debt (Yr {maxYear})</span>
-              <span className="kpi-value" style={{ color: data.ribaRemaining > 0 ? '#f43f5e' : '#10b981' }}>
+              <span className="kpi-value" style={{ color: data.ribaRemaining > 0 ? '#b54534' : '#1b4332' }}>
                 {formatCurrency(data.ribaRemaining)}
               </span>
               <span className="kpi-sub">Total paid so far: {formatCurrency(data.ribaTotalPaid)}</span>
             </div>
             <div className="kpi-card">
               <span className="kpi-label">Qard Hasan Remaining (Yr {maxYear})</span>
-              <span className="kpi-value" style={{ color: '#10b981' }}>
+              <span className="kpi-value" style={{ color: '#1b4332' }}>
                 {formatCurrency(data.qardRemaining)}
               </span>
               <span className="kpi-sub">Total paid: {formatCurrency(data.qardTotalPaid)} (0% interest)</span>
@@ -224,10 +224,10 @@ export function RibaModule() {
               <h3>Remaining Debt Trajectory: Compound Riba vs. Qard Hasan</h3>
               <div className="chart-legend">
                 <span className="legend-item">
-                  <span className="dot" style={{ background: '#f43f5e' }} /> Compound Interest ({apr}% APR)
+                  <span className="dot" style={{ background: '#b54534' }} /> Compound Interest ({apr}% APR)
                 </span>
                 <span className="legend-item">
-                  <span className="dot" style={{ background: '#10b981' }} /> Qard Hasan (0% + Respite)
+                  <span className="dot" style={{ background: '#1b4332' }} /> Qard Hasan (0% + Respite)
                 </span>
               </div>
             </div>
@@ -241,7 +241,7 @@ export function RibaModule() {
                       x2={width - pad.right}
                       y1={yScale(v)}
                       y2={yScale(v)}
-                      stroke="rgba(148,163,184,0.14)"
+                      stroke="rgba(100,95,85,0.15)"
                       strokeDasharray="3 3"
                     />
                     <text x={pad.left - 8} y={yScale(v) + 4} textAnchor="end" className="axis-label">
@@ -260,12 +260,12 @@ export function RibaModule() {
                 stroke="rgba(251,191,36,0.55)"
                 strokeDasharray="4 3"
               />
-              <text x={xScale(hardshipYear)} y={pad.top - 5} textAnchor="middle" className="axis-label" style={{ fill: '#fbbf24' }}>
+              <text x={xScale(hardshipYear)} y={pad.top - 5} textAnchor="middle" className="axis-label" style={{ fill: '#9a7432', fontWeight: 600 }}>
                 Hardship Yr {hardshipYear}
               </text>
 
-              <path d={ribaPath} fill="none" stroke="#f43f5e" strokeWidth="2.8" />
-              <path d={qardPath} fill="none" stroke="#10b981" strokeWidth="2.8" />
+              <path d={ribaPath} fill="none" stroke="#b54534" strokeWidth="2.8" />
+              <path d={qardPath} fill="none" stroke="#1b4332" strokeWidth="2.8" />
 
               {[0, Math.round(maxYear / 2), maxYear].map((yr) => (
                 <text key={yr} x={xScale(yr)} y={height - 6} textAnchor="middle" className="axis-label">

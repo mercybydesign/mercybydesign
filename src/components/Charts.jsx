@@ -113,10 +113,10 @@ export function LorenzChart({ zakatSnap, baselineSnap }) {
         <h3>Lorenz Curve (Year {zakatSnap.year})</h3>
         <div className="chart-legend">
           <span className="legend-item">
-            <span className="dot" style={{ background: '#10b981' }} /> Zakat
+            <span className="dot" style={{ background: '#1b4332' }} /> Zakat
           </span>
           <span className="legend-item">
-            <span className="dot" style={{ background: '#f43f5e' }} /> Baseline
+            <span className="dot" style={{ background: '#b54534' }} /> Baseline
           </span>
         </div>
       </div>
@@ -125,16 +125,16 @@ export function LorenzChart({ zakatSnap, baselineSnap }) {
           {/* Grid */}
           {[0.25, 0.5, 0.75, 1].map((t) => (
             <g key={t}>
-              <line x1={pad} x2={size - pad} y1={sy(t)} y2={sy(t)} stroke="rgba(148,163,184,0.12)" />
-              <line x1={sx(t)} x2={sx(t)} y1={pad} y2={size - pad} stroke="rgba(148,163,184,0.12)" />
+              <line x1={pad} x2={size - pad} y1={sy(t)} y2={sy(t)} stroke="rgba(100,95,85,0.15)" />
+              <line x1={sx(t)} x2={sx(t)} y1={pad} y2={size - pad} stroke="rgba(100,95,85,0.15)" />
             </g>
           ))}
           {/* Perfect equality line */}
-          <line x1={sx(0)} y1={sy(0)} x2={sx(1)} y2={sy(1)} stroke="rgba(148,163,184,0.45)" strokeDasharray="4 4" />
+          <line x1={sx(0)} y1={sy(0)} x2={sx(1)} y2={sy(1)} stroke="rgba(100,95,85,0.45)" strokeDasharray="4 4" />
           {/* Baseline */}
-          <path d={toPath(baselineSnap.lorenz)} fill="none" stroke="#f43f5e" strokeWidth="2.2" strokeDasharray="5 3" />
+          <path d={toPath(baselineSnap.lorenz)} fill="none" stroke="#b54534" strokeWidth="2.2" strokeDasharray="5 3" />
           {/* Zakat */}
-          <path d={toPath(zakatSnap.lorenz)} fill="none" stroke="#10b981" strokeWidth="2.8" />
+          <path d={toPath(zakatSnap.lorenz)} fill="none" stroke="#1b4332" strokeWidth="2.8" />
           {/* Axis labels */}
           <text x={size / 2} y={size - 6} textAnchor="middle" className="axis-label">
             Cumulative % of US Households
@@ -167,7 +167,7 @@ export function WealthShareBars({ zakatSnap, baselineSnap }) {
       <div className="chart-header">
         <h3>US Wealth Share by Group (Year {zakatSnap.year})</h3>
         <div className="chart-legend">
-          <span className="legend-item"><span className="dot" style={{ background: '#10b981' }} /> With Zakat</span>
+          <span className="legend-item"><span className="dot" style={{ background: '#1b4332' }} /> With Zakat</span>
           <span className="legend-item"><span className="dot" style={{ background: '#64748b' }} /> Baseline</span>
         </div>
       </div>

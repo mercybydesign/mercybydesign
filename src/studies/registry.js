@@ -143,7 +143,7 @@ export const TOPICS = [
     path: '/hajj',
     title: 'Hajj',
     subtitle: 'Global Pilgrimage & Equality',
-    category: 'Global Unity',
+    category: 'Society & Economy',
     scope: 'Equality Across Nations',
     verse: '“We made you peoples and tribes that you may know one another.” (49:13)',
     benefits: {
