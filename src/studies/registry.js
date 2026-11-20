@@ -8,17 +8,66 @@
 // - To add a new Islamic principle / category:
 //     Append a new topic object to TOPICS below.
 
+import { TawhidModule } from '../components/TawhidModule';
+import { AkhirahModule } from '../components/AkhirahModule';
 import { SalahModule } from '../components/SalahModule';
 import { ZakatModule } from '../components/ZakatModule';
 import { SawmModule } from '../components/SawmModule';
+import { HajjModule } from '../components/HajjModule';
 import { RibaModule } from '../components/RibaModule';
 import { WaqfModule } from '../components/WaqfModule';
 import { CommunityModule } from '../components/CommunityModule';
 
 export const TOPICS = [
   {
-    id: 'salah',
+    id: 'tawhid',
     num: '01',
+    path: '/tawhid',
+    title: 'Tawhid',
+    subtitle: 'Belief in One Allah',
+    category: 'Belief',
+    scope: 'Purpose & Inner Anchor',
+    verse: '“Say: He is Allah, the One.” (112:1)',
+    benefits: {
+      Individual: 'Frees the heart from status anxiety and grounds resilience.',
+      Community: 'Establishes equal dignity for every human being.',
+      Society: 'Replaces tribalism with shared moral purpose.',
+    },
+    studies: [
+      {
+        id: 'inner-anchor',
+        title: 'Identity Anchor & Emotional Resilience',
+        component: TawhidModule,
+      },
+    ],
+    plannedStudies: ['Gratitude (Shukr) & Well-Being'],
+  },
+  {
+    id: 'akhirah',
+    num: '02',
+    path: '/akhirah',
+    title: 'Day of Judgement',
+    subtitle: 'Ultimate Accountability (Akhirah)',
+    category: 'Belief',
+    scope: 'Integrity & High-Trust Society',
+    verse: '“Whoever does an atom’s weight of good will see it, and whoever does an atom’s weight of evil will see it.” (99:7–8)',
+    benefits: {
+      Individual: 'Cultivates integrity even when nobody is watching.',
+      Community: 'Builds high-trust relationships without constant policing.',
+      Society: 'Lowers corruption and gives hope to the oppressed.',
+    },
+    studies: [
+      {
+        id: 'accountability-trust',
+        title: 'Internal Accountability vs. External Policing',
+        component: AkhirahModule,
+      },
+    ],
+    plannedStudies: ['Long-Horizon Stewardship & Intergenerational Ethics'],
+  },
+  {
+    id: 'salah',
+    num: '03',
     path: '/salah',
     title: 'Salah',
     subtitle: '5 Daily Prayers',
@@ -44,7 +93,7 @@ export const TOPICS = [
   },
   {
     id: 'zakat',
-    num: '02',
+    num: '04',
     path: '/zakat',
     title: 'Zakat',
     subtitle: 'Wealth Circulation',
@@ -67,7 +116,7 @@ export const TOPICS = [
   },
   {
     id: 'sawm',
-    num: '03',
+    num: '05',
     path: '/sawm',
     title: 'Sawm',
     subtitle: 'Fasting & Ramadan',
@@ -89,8 +138,31 @@ export const TOPICS = [
     plannedStudies: ['Global Ramadan Charity & Food-Security Surge'],
   },
   {
+    id: 'hajj',
+    num: '06',
+    path: '/hajj',
+    title: 'Hajj',
+    subtitle: 'Global Pilgrimage & Equality',
+    category: 'Global Unity',
+    scope: 'Equality Across Nations',
+    verse: '“We made you peoples and tribes that you may know one another.” (49:13)',
+    benefits: {
+      Individual: 'Humbles the ego and renews spiritual focus.',
+      Community: 'Erases class and racial barriers through equal Ihram.',
+      Society: 'Fosters global tolerance, empathy, and solidarity.',
+    },
+    studies: [
+      {
+        id: 'ihram-equality',
+        title: 'The Ihram Effect — Erasing Status & Borders',
+        component: HajjModule,
+      },
+    ],
+    plannedStudies: ['Contact Theory & Tolerance (Harvard/MIT Hajj Study)'],
+  },
+  {
     id: 'riba',
-    num: '04',
+    num: '07',
     path: '/riba',
     title: 'No Riba',
     subtitle: 'Interest-Free Finance',
@@ -116,7 +188,7 @@ export const TOPICS = [
   },
   {
     id: 'waqf',
-    num: '05',
+    num: '08',
     path: '/waqf',
     title: 'Waqf',
     subtitle: 'Perpetual Endowments',
@@ -139,7 +211,7 @@ export const TOPICS = [
   },
   {
     id: 'community',
-    num: '06',
+    num: '09',
     path: '/community',
     title: 'Community',
     subtitle: 'Silat al-Rahim & Neighbor Rights',
