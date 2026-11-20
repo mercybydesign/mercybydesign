@@ -1269,20 +1269,20 @@ input[type='range'] {
 
 .bp-open-btn {
   margin-top: auto;
-  background: transparent;
-  color: var(--accent);
+  background: var(--accent);
+  color: #faf7f2;
   border: 1px solid var(--accent);
   border-radius: 4px;
-  padding: 8px 14px;
+  padding: 9px 14px;
   font-size: 0.84rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .bp-open-btn:hover {
-  background: var(--accent);
-  color: #faf7f2;
+  opacity: 0.92;
+  transform: translateY(-1px);
 }
 
 /* Simplified Zakat Toolbar, Settings Drawer & Sub-Tabs */
@@ -1968,4 +1968,74 @@ input[type='range'] {
 .pager-label {
   font-size: 0.76rem;
   color: var(--muted, #5c574d);
+}
+
+/* Unified Editorial Site Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0 16px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--border, #e5dfd3);
+  flex-wrap: wrap;
+}
+
+.brand-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--ink, #1c1b18);
+}
+
+.brand-wordmark {
+  font-family: 'Newsreader', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink, #1c1b18);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 7px 13px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted, #5c574d);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--ink, #1c1b18);
+  background: rgba(28, 27, 24, 0.04);
+}
+
+.nav-link.active {
+  color: #1b4332;
+  font-weight: 600;
+  background: rgba(27, 67, 50, 0.08);
+  border-color: rgba(27, 67, 50, 0.18);
+}
+
+.nav-github {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  margin-left: 4px;
+  border-color: var(--border, #e5dfd3);
 }

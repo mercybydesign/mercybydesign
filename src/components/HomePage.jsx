@@ -39,31 +39,17 @@ export function HomePage({ onSelectModule }) {
 
   return (
     <div className="home-wrap">
-      {/* Hero */}
-      <section className="hero-card">
+      {/* Compact Editorial Hero */}
+      <section className="hero-card" style={{ padding: '28px 30px' }}>
         <span className="wisdom-eyebrow">OPEN-SOURCE INTERACTIVE ISLAMIC WISDOM LAB</span>
-        <h2 className="hero-title">
+        <h2 className="hero-title" style={{ marginBottom: '10px' }}>
           See How What Allah Prescribed Benefits <span className="hero-accent">All of Humanity</span>
         </h2>
-        <p className="hero-sub">
-          MercyByDesign translates Islamic principles into transparent, interactive simulations—showing their measurable impact on the <strong>individual</strong>, the <strong>family</strong>, the <strong>community</strong>, and <strong>society as a whole</strong>.
+        <p className="hero-sub" style={{ marginBottom: '18px' }}>
+          Transparent, interactive simulations exploring how Islamic principles benefit the <strong>individual</strong>, the <strong>family</strong>, the <strong>community</strong>, and <strong>society as a whole</strong>.
         </p>
-        <div className="hero-actions">
-          <button className="primary-btn lg" onClick={() => onSelectModule('salah')}>
-            Start with Salah →
-          </button>
-          <button className="secondary-btn lg" onClick={() => onSelectModule('zakat')}>
-            Explore Zakat
-          </button>
-          <button className="secondary-btn lg" onClick={() => onSelectModule('sawm')}>
-            Explore Sawm
-          </button>
-          <button className="secondary-btn lg" onClick={() => onSelectModule('riba')}>
-            Explore No Riba
-          </button>
-        </div>
 
-        <div className="impact-strip">
+        <div className="impact-strip" style={{ marginTop: 0 }}>
           <div className="impact-pill"><strong>Individual</strong> • Body, mind &amp; dignity</div>
           <div className="impact-pill"><strong>Family</strong> • Stability &amp; protection</div>
           <div className="impact-pill"><strong>Community</strong> • Trust &amp; mutual aid</div>
@@ -126,10 +112,11 @@ export function HomePage({ onSelectModule }) {
         ) : (
           <div className="blueprint-grid">
             {filteredTopics.map((topic) => (
-              <article key={topic.id} className="bp-card live">
+              <article key={topic.id} className="bp-card is-live">
                 <div className="bp-top">
-                  <span className="bp-num">{topic.num}</span>
-                  <span className="bp-cat">{topic.category}</span>
+                  <span className="bp-num">
+                    {topic.num} • {topic.category}
+                  </span>
                   <span className="bp-status live">
                     {topic.studies.length} Live
                   </span>
@@ -142,7 +129,7 @@ export function HomePage({ onSelectModule }) {
 
                 <div className="bp-benefits">
                   {Object.entries(topic.benefits).map(([level, text]) => (
-                    <div key={level} className="bp-benefit-row">
+                    <div key={level} className="bp-ben-row">
                       <strong>{level}:</strong> <span>{text}</span>
                     </div>
                   ))}
@@ -163,7 +150,7 @@ export function HomePage({ onSelectModule }) {
                       </li>
                     ))}
                     {(topic.plannedStudies || []).map((name) => (
-                      <li key={name} className="sim-planned">
+                      <li key={name} className="sim-soon">
                         ○ {name} <em>(open to contribute)</em>
                       </li>
                     ))}
@@ -171,7 +158,8 @@ export function HomePage({ onSelectModule }) {
                 </div>
 
                 <button
-                  className="primary-btn bp-cta"
+                  type="button"
+                  className="bp-open-btn"
                   onClick={() => onSelectModule(topic.id)}
                 >
                   Open {topic.title} →

@@ -103,81 +103,80 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <header className="top-bar">
-        <div className="brand-block">
-          <div
-            className="brand-row"
-            style={{ alignItems: 'center', cursor: 'pointer' }}
-            onClick={() => navigate('home')}
-          >
-            <Logo size={34} />
-            <h1>MercyByDesign</h1>
-            <span className="brand-sub-tag">Studies in Islamic Wisdom</span>
-          </div>
-          <p className="subtitle">
-            Interactive models exploring how Islamic principles shape individual, family, and societal well-being.
-          </p>
-        </div>
-      </header>
-
-      {/* Clean Editorial Navigation with Studies Dropdown */}
-      <nav className="module-nav" aria-label="Main navigation">
+      <header className="site-header">
         <button
-          className={`module-tab ${route.module === 'home' ? 'active' : ''}`}
+          type="button"
+          className="brand-trigger"
           onClick={() => navigate('home')}
         >
-          <span className="mod-text"><strong>Overview</strong></span>
+          <Logo size={30} />
+          <span className="brand-wordmark">MercyByDesign</span>
+          <span className="brand-sub-tag">Islamic Wisdom Lab</span>
         </button>
 
-        <div className="nav-dropdown-wrap" ref={dropdownRef}>
+        <nav className="site-nav" aria-label="Main navigation">
           <button
-            className={`module-tab ${activeTopic ? 'active' : ''}`}
-            onClick={() => setStudiesOpen((o) => !o)}
-            aria-expanded={studiesOpen}
-            aria-haspopup="menu"
+            className={`nav-link ${route.module === 'home' ? 'active' : ''}`}
+            onClick={() => navigate('home')}
           >
-            <span className="mod-text">
-              <strong>
-                {activeTopic ? `Studies: ${activeTopic.title}` : 'Studies'} ▾
-              </strong>
-            </span>
+            Overview
           </button>
 
-          {studiesOpen && (
-            <div className="nav-dropdown" role="menu">
-              {Array.from(new Set(TOPICS.map((t) => t.category))).map((cat) => (
-                <div key={cat} className="dropdown-group">
-                  <div className="dropdown-group-label">{cat}</div>
-                  {TOPICS.filter((t) => t.category === cat).map((t) => (
-                    <button
-                      key={t.id}
-                      role="menuitem"
-                      className={`dropdown-item ${route.module === t.id ? 'active' : ''}`}
-                      onClick={() => navigate(t.id)}
-                    >
-                      <span className="dd-num">{t.num}</span>
-                      <span className="dd-body">
-                        <strong>
-                          {t.title}
-                          {t.studies.length > 1 ? ` (${t.studies.length})` : ''}
-                        </strong>
-                        <small>{t.subtitle || t.scope}</small>
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+          <div className="nav-dropdown-wrap" ref={dropdownRef}>
+            <button
+              className={`nav-link ${activeTopic ? 'active' : ''}`}
+              onClick={() => setStudiesOpen((o) => !o)}
+              aria-expanded={studiesOpen}
+              aria-haspopup="menu"
+            >
+              {activeTopic ? `Studies: ${activeTopic.title}` : 'Studies'} ▾
+            </button>
 
-        <button
-          className={`module-tab ${route.module === 'about' ? 'active' : ''}`}
-          onClick={() => navigate('about')}
-        >
-          <span className="mod-text"><strong>About</strong></span>
-        </button>
-      </nav>
+            {studiesOpen && (
+              <div className="nav-dropdown" role="menu">
+                {Array.from(new Set(TOPICS.map((t) => t.category))).map((cat) => (
+                  <div key={cat} className="dropdown-group">
+                    <div className="dropdown-group-label">{cat}</div>
+                    {TOPICS.filter((t) => t.category === cat).map((t) => (
+                      <button
+                        key={t.id}
+                        role="menuitem"
+                        className={`dropdown-item ${route.module === t.id ? 'active' : ''}`}
+                        onClick={() => navigate(t.id)}
+                      >
+                        <span className="dd-num">{t.num}</span>
+                        <span className="dd-body">
+                          <strong>
+                            {t.title}
+                            {t.studies.length > 1 ? ` (${t.studies.length})` : ''}
+                          </strong>
+                          <small>{t.subtitle || t.scope}</small>
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <button
+            className={`nav-link ${route.module === 'about' ? 'active' : ''}`}
+            onClick={() => navigate('about')}
+          >
+            About
+          </button>
+
+          <a
+            className="nav-link nav-github"
+            href="https://github.com/mercybydesign/mercybydesign"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub ↗
+          </a>
+        </nav>
+      </header>
 
       {route.module === 'home' && <HomePage onSelectModule={navigate} />}
       {route.module === 'about' && <AboutPage />}
