@@ -4,16 +4,38 @@ import { TOPICS } from '../studies/registry';
 export function HomePage({ onSelectModule }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [query, setQuery] = useState('');
+  const [spotlightTab, setSpotlightTab] = useState('featured'); // 'featured' | 'latest'
 
   const categories = useMemo(
     () => ['All', ...Array.from(new Set(TOPICS.map((t) => t.category)))],
     []
   );
 
-  const totalStudies = useMemo(
-    () => TOPICS.reduce((sum, t) => sum + t.studies.length, 0),
+  const allStudies = useMemo(
+    () =>
+      TOPICS.flatMap((topic) =>
+        topic.studies.map((study) => ({
+          ...study,
+          topicId: topic.id,
+          topicNum: topic.num,
+          topicTitle: topic.title,
+          category: topic.category,
+        }))
+      ),
     []
   );
+
+  const spotlightStudies = useMemo(() => {
+    if (spotlightTab === 'latest') {
+      return [...allStudies]
+        .sort((a, b) => (b.addedAt || '').localeCompare(a.addedAt || ''))
+        .slice(0, 3);
+    }
+    const featured = allStudies.filter((s) => s.featured);
+    return (featured.length > 0 ? featured : allStudies).slice(0, 3);
+  }, [allStudies, spotlightTab]);
+
+  const totalStudies = allStudies.length;
 
   const filteredTopics = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -54,6 +76,57 @@ export function HomePage({ onSelectModule }) {
           <div className="impact-pill"><strong>Family</strong> • Stability &amp; protection</div>
           <div className="impact-pill"><strong>Community</strong> • Trust &amp; mutual aid</div>
           <div className="impact-pill"><strong>Society</strong> • Justice &amp; prosperity</div>
+        </div>
+      </section>
+
+      {/* Featured & Latest Spotlight */}
+      <section className="spotlight-section">
+        <div className="spotlight-header">
+          <div className="region-pills" role="tablist" aria-label="Spotlight studies">
+            <button
+              role="tab"
+              aria-selected={spotlightTab === 'featured'}
+              className={`region-pill ${spotlightTab === 'featured' ? 'active' : ''}`}
+              onClick={() => setSpotlightTab('featured')}
+            >
+              Featured Studies
+            </button>
+            <button
+              role="tab"
+              aria-selected={spotlightTab === 'latest'}
+              className={`region-pill ${spotlightTab === 'latest' ? 'active' : ''}`}
+              onClick={() => setSpotlightTab('latest')}
+            >
+              Latest Additions
+            </button>
+          </div>
+          <span className="spotlight-hint">
+            {spotlightTab === 'featured'
+              ? 'Popular starting points'
+              : 'Most recently published'}
+          </span>
+        </div>
+
+        <div className="spotlight-grid">
+          {spotlightStudies.map((item) => (
+            <button
+              key={`${item.topicId}-${item.id}`}
+              type="button"
+              className="spotlight-card"
+              onClick={() => onSelectModule(item.topicId, item.id)}
+            >
+              <div className="spotlight-meta">
+                <span>
+                  {item.topicNum} • {item.topicTitle}
+                </span>
+                <span>{item.category}</span>
+              </div>
+              <strong>{item.title}</strong>
+              <span className="spotlight-cta">
+                {item.article ? 'Read Brief →' : 'Open Study →'}
+              </span>
+            </button>
+          ))}
         </div>
       </section>
 

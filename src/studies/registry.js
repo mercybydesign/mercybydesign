@@ -39,6 +39,7 @@ export const TOPICS = [
       {
         id: 'inner-anchor',
         title: 'Identity Anchor & Emotional Resilience',
+        addedAt: '2026-11-19',
         component: TawhidModule,
       },
     ],
@@ -62,6 +63,7 @@ export const TOPICS = [
       {
         id: 'accountability-trust',
         title: 'Internal Accountability vs. External Policing',
+        addedAt: '2026-11-19',
         component: AkhirahModule,
       },
     ],
@@ -85,6 +87,8 @@ export const TOPICS = [
       {
         id: 'stress-reset',
         title: '24-Hour Stress & Cortisol Reset',
+        featured: true,
+        addedAt: '2026-11-15',
         component: SalahModule,
       },
     ],
@@ -111,6 +115,8 @@ export const TOPICS = [
       {
         id: 'wealth-redistribution',
         title: 'Global & National 30-Year Macro Model',
+        featured: true,
+        addedAt: '2026-11-15',
         component: ZakatModule,
       },
     ],
@@ -157,6 +163,7 @@ export const TOPICS = [
       {
         id: 'ihram-equality',
         title: 'The Ihram Effect — Erasing Status & Borders',
+        addedAt: '2026-11-19',
         component: HajjModule,
       },
     ],
@@ -180,6 +187,8 @@ export const TOPICS = [
       {
         id: 'compound-vs-qard',
         title: 'Compound Riba vs. Qard Hasan Simulator',
+        featured: true,
+        addedAt: '2026-11-16',
         component: RibaModule,
       },
     ],
