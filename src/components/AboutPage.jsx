@@ -24,8 +24,10 @@ export function AboutPage() {
           transparent, interactive models.
         </p>
         <p className="about-body">
-          MercyByDesign is open source so anyone can audit the math, verify Fiqh
-          rules, contribute country datasets, or build new studies.
+          MercyByDesign is open source so anyone—scholars, doctors, economists,
+          writers, or developers—can audit the math, contribute country
+          datasets, publish scientific study summaries and research articles, or
+          build new interactive simulations.
         </p>
       </section>
 
@@ -67,13 +69,13 @@ export function AboutPage() {
 
           <div className="contact-links" style={{ marginTop: '16px' }}>
             <div className="contact-row">
-              <span>Propose a New Study</span>
+              <span>Publish a Study or Article</span>
               <a
                 href={`${GITHUB_REPO}/issues/new?template=new-study.md`}
                 target="_blank"
                 rel="noreferrer"
               >
-                Open Study Proposal →
+                Submit Study / Research Brief →
               </a>
             </div>
             <div className="contact-row">

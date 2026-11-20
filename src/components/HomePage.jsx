@@ -46,7 +46,7 @@ export function HomePage({ onSelectModule }) {
           See How What Allah Prescribed Benefits <span className="hero-accent">All of Humanity</span>
         </h2>
         <p className="hero-sub" style={{ marginBottom: '18px' }}>
-          Transparent, interactive simulations exploring how Islamic principles benefit the <strong>individual</strong>, the <strong>family</strong>, the <strong>community</strong>, and <strong>society as a whole</strong>.
+          Open-source interactive simulations, scientific study summaries, and research briefs exploring how Islamic principles benefit the <strong>individual</strong>, the <strong>family</strong>, the <strong>community</strong>, and <strong>society as a whole</strong>.
         </p>
 
         <div className="impact-strip" style={{ marginTop: 0 }}>

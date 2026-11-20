@@ -1,5 +1,6 @@
 import React from 'react';
 import { TOPICS } from '../studies/registry';
+import { ArticleView } from './ArticleView';
 
 export function TopicShell({ topic, activeStudyId, onSelectStudy }) {
   const studies = topic.studies || [];
@@ -54,7 +55,11 @@ export function TopicShell({ topic, activeStudyId, onSelectStudy }) {
         </div>
       )}
 
-      <StudyComponent />
+      {activeStudy.article ? (
+        <ArticleView article={activeStudy.article} />
+      ) : (
+        <StudyComponent />
+      )}
 
       <footer className="topic-pager" aria-label="Study navigation">
         {prevTopic ? (

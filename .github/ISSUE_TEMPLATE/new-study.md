@@ -1,20 +1,21 @@
 ---
-name: Propose a New Study
-about: Suggest a new interactive study for MercyByDesign
-title: "[New Study] "
+name: Submit a Study, Research Brief, or Article
+about: Propose or submit an interactive simulation, scientific study summary, or research article
+title: "[Study / Article] "
 labels: enhancement, new-study
 ---
 
-## Study Title & Principle
-What Islamic principle does this study explore (e.g., *Mirath* inheritance, *Sadaqah*, environmental stewardship)?
+## Format
+- [ ] Scientific Study Summary / Research Brief (no simulation code needed)
+- [ ] Editorial Article / Historical Findings
+- [ ] Interactive Simulation
 
-## Interactive Concept
-What would the user adjust (sliders/toggles), and what would they see change?
+## Islamic Principle & Category
+Which principle does this belong under (e.g., *Salah*, *Sawm*, *Zakat*, *Hajj*, or a new principle)?
 
-## Model Type
-- [ ] Data-Backed Simulation (calibrated to published datasets)
-- [ ] Conceptual Model (illustrative mechanics)
+## Summary & Key Findings
+What are the core takeaways, data points, or interactive mechanics?
 
-## Key Sources
-- **Scriptural:**
-- **Empirical / Historical:**
+## Primary Sources
+- **Scriptural (Qur’an / Hadith):**
+- **Scientific, Economic, or Historical Citations:**

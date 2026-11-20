@@ -2039,3 +2039,33 @@ input[type='range'] {
   margin-left: 4px;
   border-color: var(--border, #e5dfd3);
 }
+
+/* Research Brief / Article View */
+.article-meta {
+  font-size: 0.88rem;
+  color: var(--muted, #5c574d);
+  margin: 6px 0 12px;
+}
+
+.article-body {
+  background: var(--surface, #fffdf9);
+  border: 1px solid var(--border, #e5dfd3);
+  border-radius: 12px;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.article-section h3 {
+  font-family: 'Newsreader', serif;
+  font-size: 1.25rem;
+  margin: 0 0 8px;
+  color: var(--ink, #1c1b18);
+}
+
+.article-section p {
+  margin: 0 0 10px;
+  line-height: 1.7;
+  color: var(--ink, #1c1b18);
+}

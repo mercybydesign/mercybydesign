@@ -18,9 +18,11 @@ Our goal is to keep every study **transparent, welcoming, well-sourced, and cred
    - Improve keyboard navigation, screen-reader labels, color contrast, or help prepare internationalization (i18n).
 4. **Bug Fixes & Visual Polish**
    - Fix responsive layout issues, SVG chart edge cases, or performance bottlenecks.
-5. **New Study or Principle Proposals**
-   - Propose a new interactive study (e.g., *Salah* spine/posture mobility, *Mirath* inheritance dispersion, prohibition of alcohol/gambling) via the **New Study Proposal** issue template before writing code.
-   - **Adding a study to an existing principle** (e.g., a second study under `salah`): create `src/components/<Name>Module.jsx` (including `<MethodologyDrawer />`) and append it to that topic's `studies` array in `src/studies/registry.js`. A study switcher tab bar and deep link (`/<topic>/<studyId>`) appear automatically.
+5. **Publish a New Simulation, Scientific Study Summary, or Article**
+   - You do **not** need to write simulation code to contribute! We welcome peer-reviewed study summaries, research briefs, and well-cited articles alongside interactive models.
+   - Propose your contribution via the **New Study or Article** issue template.
+   - **Adding a research article** under an existing principle: add an `article: { title, author, lead, keyFindings, sections, sources }` entry to that topic's `studies` array in `src/studies/registry.js` — `ArticleView.jsx` renders it automatically.
+   - **Adding an interactive simulation:** create `src/components/<Name>Module.jsx` (including `<MethodologyDrawer />`) and append it to `studies` in `src/studies/registry.js`.
    - **Adding a brand-new principle / category:** append a new topic object to `TOPICS` in `src/studies/registry.js`.
 
 ---
