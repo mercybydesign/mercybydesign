@@ -31,7 +31,7 @@ export function ZakatModule() {
         }
         return y + 1;
       });
-    }, 350);
+    }, 900);
     return () => clearInterval(timer);
   }, [isPlaying, params.years]);
 
