@@ -16,7 +16,7 @@ export function ZakatModule() {
   const [zakatTab, setZakatTab] = useState('visual'); // 'visual' | 'personal' | 'compare' | 'charts'
   const [showSettings, setShowSettings] = useState(false);
   const [params, setParams] = useState(DEFAULT_PARAMS);
-  const [currentYear, setCurrentYear] = useState(10);
+  const [currentYear, setCurrentYear] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const sim = useMemo(() => runSimulation(params), [params]);
