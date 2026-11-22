@@ -9,6 +9,12 @@
 //     Append a new topic object to TOPICS below.
 
 import { lazy } from 'react';
+import {
+  HAJJ_ARTICLE,
+  COMMUNITY_ARTICLE,
+  TAWHID_ARTICLE,
+  AKHIRAH_ARTICLE,
+} from './articles';
 
 const TawhidModule = lazy(() => import('../components/TawhidModule').then((m) => ({ default: m.TawhidModule })));
 const AkhirahModule = lazy(() => import('../components/AkhirahModule').then((m) => ({ default: m.AkhirahModule })));
@@ -37,8 +43,14 @@ export const TOPICS = [
     },
     studies: [
       {
+        id: 'tawhid-resilience-brief',
+        title: 'Research Brief: Intrinsic Purpose & Resilience',
+        addedAt: '2026-11-22',
+        article: TAWHID_ARTICLE,
+      },
+      {
         id: 'inner-anchor',
-        title: 'Identity Anchor & Emotional Resilience',
+        title: 'Conceptual Model: Identity Anchor & Stability',
         addedAt: '2026-11-19',
         component: TawhidModule,
       },
@@ -61,8 +73,14 @@ export const TOPICS = [
     },
     studies: [
       {
+        id: 'akhirah-accountability-brief',
+        title: 'Research Brief: Moral Accountability & Trust',
+        addedAt: '2026-11-22',
+        article: AKHIRAH_ARTICLE,
+      },
+      {
         id: 'accountability-trust',
-        title: 'Internal Accountability vs. External Policing',
+        title: 'Conceptual Model: Internal vs. External Policing',
         addedAt: '2026-11-19',
         component: AkhirahModule,
       },
@@ -161,13 +179,20 @@ export const TOPICS = [
     },
     studies: [
       {
+        id: 'harvard-hajj-study',
+        title: 'Research Brief: Harvard/MIT Hajj Tolerance Study',
+        featured: true,
+        addedAt: '2026-11-22',
+        article: HAJJ_ARTICLE,
+      },
+      {
         id: 'ihram-equality',
-        title: 'The Ihram Effect — Erasing Status & Borders',
+        title: 'Conceptual Model: The Ihram Effect',
         addedAt: '2026-11-19',
         component: HajjModule,
       },
     ],
-    plannedStudies: ['Contact Theory & Tolerance (Harvard/MIT Hajj Study)'],
+    plannedStudies: [],
   },
   {
     id: 'riba',
@@ -236,8 +261,14 @@ export const TOPICS = [
     },
     studies: [
       {
+        id: 'social-connection-brief',
+        title: 'Research Brief: Social Connection & Longevity',
+        addedAt: '2026-11-22',
+        article: COMMUNITY_ARTICLE,
+      },
+      {
         id: 'mutual-aid-network',
-        title: 'Social Isolation & Mutual-Aid Network Graph',
+        title: 'Conceptual Model: Mutual-Aid Network Graph',
         component: CommunityModule,
       },
     ],

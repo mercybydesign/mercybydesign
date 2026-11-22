@@ -39,7 +39,7 @@ describe('studies/registry', () => {
         expect(studyIds.has(study.id)).toBe(false);
         studyIds.add(study.id);
         expect(study.title).toBeTruthy();
-        expect(study.component).toBeTruthy();
+        expect(study.component || study.article).toBeTruthy();
       }
     }
   });

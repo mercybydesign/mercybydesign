@@ -6,6 +6,7 @@ export function WaqfModule() {
   const [initialGift, setInitialGift] = useState(500000);
   const [returnRate, setReturnRate] = useState(6.0);
   const [payoutRate, setPayoutRate] = useState(4.0);
+  const [inflationRate, setInflationRate] = useState(2.5);
   const [horizon, setHorizon] = useState(50);
 
   const sim = useMemo(() => {
@@ -17,8 +18,12 @@ export function WaqfModule() {
       const growth = principal * (returnRate / 100);
       const payout = principal * (payoutRate / 100);
       principal = Math.max(0, principal + growth - payout);
-      cumulativePayout += payout;
-      timeline.push({ year: y, principal, cumulativePayout });
+      // Deflate into real (today's) purchasing power when inflation > 0
+      const deflator = Math.pow(1 + inflationRate / 100, y);
+      const realPrincipal = principal / deflator;
+      const realPayout = payout / deflator;
+      cumulativePayout += realPayout;
+      timeline.push({ year: y, principal: realPrincipal, cumulativePayout });
     }
 
     const final = timeline[timeline.length - 1];
@@ -30,7 +35,7 @@ export function WaqfModule() {
       scholarships: Math.round(final.cumulativePayout / 5000),
       clinicVisits: Math.round(final.cumulativePayout / 75),
     };
-  }, [initialGift, returnRate, payoutRate, horizon]);
+  }, [initialGift, returnRate, payoutRate, inflationRate, horizon]);
 
   const width = 560;
   const height = 220;
@@ -137,6 +142,22 @@ export function WaqfModule() {
               onChange={(e) => setPayoutRate(Number(e.target.value))}
             />
             <small>Keeping payout below yield lets the endowment grow perpetually.</small>
+          </div>
+
+          <div className="control-group">
+            <label>
+              <span>Annual Inflation Rate</span>
+              <strong>{inflationRate.toFixed(1)}%</strong>
+            </label>
+            <input
+              type="range"
+              min="0"
+              max="6"
+              step="0.5"
+              value={inflationRate}
+              onChange={(e) => setInflationRate(Number(e.target.value))}
+            />
+            <small>Adjusts future aid &amp; principal into today’s real purchasing power (0% = nominal).</small>
           </div>
 
           <div className="control-group">

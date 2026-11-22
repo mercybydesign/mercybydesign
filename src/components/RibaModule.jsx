@@ -11,6 +11,9 @@ export function RibaModule() {
   const data = useMemo(() => {
     const r = apr / 100;
     const annualBasePayment = principal / years;
+    // Standard level-payment amortization formula: P * r / (1 - (1 + r)^-n)
+    const amortizedAnnualPayment =
+      r > 0 ? (principal * r) / (1 - Math.pow(1 + r, -years)) : annualBasePayment;
 
     // 1. Riba (Compound Interest Loan with 1 hardship year where payment is missed)
     let ribaDebt = principal;
@@ -29,11 +32,11 @@ export function RibaModule() {
         const interest = ribaDebt * r;
         ribaDebt += interest;
         if (y === hardshipYear) {
-          // Missed payment in hardship year -> interest compounds + late penalty
+          // Missed payment in hardship year -> interest compounds + 3% late penalty
           ribaDebt += ribaDebt * 0.03;
         } else {
-          // Standard amortized-like payment
-          const payment = Math.min(ribaDebt, annualBasePayment * 1.45);
+          // Standard amortized annual payment
+          const payment = Math.min(ribaDebt, amortizedAnnualPayment);
           ribaDebt -= payment;
           ribaTotalPaid += payment;
           ribaInterestPaid += Math.min(interest, payment);

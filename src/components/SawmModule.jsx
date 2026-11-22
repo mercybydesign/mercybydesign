@@ -16,11 +16,40 @@ export function SawmModule() {
   const currentStage =
     FAST_STAGES.find((s) => fastHour >= s.start && fastHour <= s.end) || FAST_STAGES[FAST_STAGES.length - 1];
 
-  // Modeled physiological & behavioral indicators (0-100 scale)
-  const insulinDrop = Math.min(95, Math.round(15 + fastHour * 4.8));
-  const fatOxidation = fastHour < 8 ? Math.round(fastHour * 2) : Math.min(92, Math.round(16 + (fastHour - 8) * 7.8));
-  const selfMastery = Math.min(96, Math.round(35 + ramadanDay * 2.0));
-  const empathyIndex = Math.min(98, Math.round(40 + ramadanDay * 1.9));
+  // Evidence-based qualitative stage indicators (avoiding invented linear percentages)
+  const insulinState =
+    fastHour < 4
+      ? 'Elevated (Fed)'
+      : fastHour < 8
+      ? 'Declining'
+      : fastHour < 12
+      ? 'Low Baseline'
+      : 'High Sensitivity';
+
+  const fuelSource =
+    fastHour < 4
+      ? 'Dietary Glucose'
+      : fastHour < 12
+      ? 'Liver Glycogen'
+      : fastHour < 15
+      ? 'Glycogen → Fat'
+      : 'Lipolysis & Ketones';
+
+  const habitPhase =
+    ramadanDay <= 3
+      ? 'Adaptation'
+      : ramadanDay <= 10
+      ? 'Routine Forming'
+      : ramadanDay <= 20
+      ? 'Consolidation'
+      : 'Deepened Habit';
+
+  const communityPhase =
+    ramadanDay <= 10
+      ? 'Shared Iftars'
+      : ramadanDay <= 20
+      ? 'Charity Momentum'
+      : 'Peak Giving & Zakat al-Fitr';
 
   return (
     <div className="module-wrap">
@@ -109,23 +138,23 @@ export function SawmModule() {
         <main className="dashboard">
           <section className="kpi-grid">
             <div className="kpi-card highlight">
-              <span className="kpi-label">Insulin Sensitivity Gain</span>
-              <span className="kpi-value">{insulinDrop}%</span>
+              <span className="kpi-label">Insulin State</span>
+              <span className="kpi-value" style={{ fontSize: '1.25rem' }}>{insulinState}</span>
               <span className="kpi-sub pos">At Hour {fastHour} of daily fast</span>
             </div>
             <div className="kpi-card">
-              <span className="kpi-label">Fat-Burning Switch</span>
-              <span className="kpi-value">{fatOxidation}%</span>
-              <span className="kpi-sub">Accelerates after Hour 10–12</span>
+              <span className="kpi-label">Primary Fuel Source</span>
+              <span className="kpi-value" style={{ fontSize: '1.25rem' }}>{fuelSource}</span>
+              <span className="kpi-sub">Metabolic switch begins ~12h</span>
             </div>
             <div className="kpi-card">
-              <span className="kpi-label">Self-Control &amp; Habit Reset</span>
-              <span className="kpi-value">{selfMastery}%</span>
+              <span className="kpi-label">Behavioral Habit Phase</span>
+              <span className="kpi-value" style={{ fontSize: '1.25rem' }}>{habitPhase}</span>
               <span className="kpi-sub">Day {ramadanDay} of 30</span>
             </div>
             <div className="kpi-card">
-              <span className="kpi-label">Empathy &amp; Generosity</span>
-              <span className="kpi-value">{empathyIndex}%</span>
+              <span className="kpi-label">Community Solidarity</span>
+              <span className="kpi-value" style={{ fontSize: '1.25rem' }}>{communityPhase}</span>
               <span className="kpi-sub pos">Peaks in final 10 nights + Zakat al-Fitr</span>
             </div>
           </section>
