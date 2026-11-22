@@ -5,8 +5,14 @@ import { HomePage } from './components/HomePage';
 import { AboutPage } from './components/AboutPage';
 import { Logo } from './components/Logo';
 
+const BASE_PREFIX = (import.meta.env.BASE_URL || '/').replace(/\/+$/, '');
+
 function parseRoute(pathname) {
-  const segments = pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
+  const stripped =
+    BASE_PREFIX && pathname.startsWith(BASE_PREFIX)
+      ? pathname.slice(BASE_PREFIX.length)
+      : pathname;
+  const segments = stripped.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
   if (segments.length === 0) return { module: 'home', studyId: null };
   if (segments[0] === 'about') return { module: 'about', studyId: null };
 
@@ -23,14 +29,15 @@ function parseRoute(pathname) {
 }
 
 function buildPath(mod, studyId) {
-  if (mod === 'home') return '/';
-  if (mod === 'about') return '/about';
+  const withBase = (p) => `${BASE_PREFIX}${p}` || '/';
+  if (mod === 'home') return withBase('/');
+  if (mod === 'about') return withBase('/about');
   const topic = TOPICS.find((t) => t.id === mod);
-  if (!topic) return '/';
+  if (!topic) return withBase('/');
   if (studyId && topic.studies.length > 1) {
-    return `${topic.path}/${studyId}`;
+    return withBase(`${topic.path}/${studyId}`);
   }
-  return topic.path;
+  return withBase(topic.path);
 }
 
 function getPageTitle(mod, studyId) {
