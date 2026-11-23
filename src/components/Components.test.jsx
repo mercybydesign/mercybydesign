@@ -22,7 +22,7 @@ describe('Shared UI Components', () => {
 
   it('renders AboutPage', () => {
     render(<AboutPage />);
-    expect(screen.getByRole('heading', { name: /Why I Built MercyByDesign/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Exploring Islamic Wisdom/i })).toBeInTheDocument();
   });
 
   it('renders MethodologyDrawer and toggles assumptions & sources', () => {

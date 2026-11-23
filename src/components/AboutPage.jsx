@@ -6,51 +6,53 @@ export function AboutPage() {
   return (
     <div className="about-wrap">
       <section className="about-hero">
-        <span className="wisdom-eyebrow">ABOUT THE CREATOR &amp; MISSION</span>
-        <h2>Why I Built MercyByDesign</h2>
+        <span className="wisdom-eyebrow">ABOUT MERCYBYDESIGN</span>
+        <h2>Exploring Islamic Wisdom Through Data &amp; Research</h2>
         <p className="about-lead">
-          MercyByDesign started from a simple question:{' '}
+          MercyByDesign starts from a simple question:{' '}
           <em>
-            what would actually happen if humanity practiced the principles Allah
+            what happens when humanity practices the principles Allah
             prescribed—not just in theory, but measured across real households,
             neighborhoods, and nations?
           </em>
         </p>
         <p className="about-body">
-          Too often, conversations about Islam stay abstract. My goal with this
-          project is to let anyone—Muslim or non-Muslim, curious student or
-          economist—explore the wisdom (<em>hikmah</em>) behind Salah, Zakat,
-          Sawm, interest-free finance, Waqf, and neighbor rights through honest,
-          transparent, interactive models.
-        </p>
-        <p className="about-body">
-          MercyByDesign is open source so anyone—scholars, doctors, economists,
-          writers, or developers—can audit the math, contribute country
-          datasets, publish scientific study summaries and research articles, or
-          build new interactive simulations.
+          Our goal is to let anyone—Muslim or non-Muslim, curious student or
+          researcher—explore the wisdom (<em>hikmah</em>) behind Tawhid, Salah,
+          Zakat, Sawm, Hajj, interest-free finance, Waqf, and neighbor rights
+          through transparent interactive simulations and peer-reviewed research
+          briefs.
         </p>
       </section>
 
       <div className="about-grid">
         <section className="about-card">
-          <h3>About the Project</h3>
+          <h3>Open &amp; Auditable</h3>
           <p className="about-meta">Open-Source Educational Initiative</p>
           <p className="about-body">
-            Built with the intention of creating beneficial, accessible tools (
-            <em>Sadaqah Jariyah</em>) that highlight how Islamic guidance
-            nurtures balance, dignity, and well-being for all people.
+            Every simulation and research brief is open source so scholars,
+            economists, researchers, and developers can inspect the math, verify
+            sources, and improve the models together.
           </p>
 
           <hr className="divider" />
 
           <div className="contact-links">
             <div className="contact-row">
-              <span>Direct Email</span>
-              <a href="mailto:hello@mercybydesign.org">hello@mercybydesign.org</a>
+              <span>Source Code</span>
+              <a href={GITHUB_REPO} target="_blank" rel="noreferrer">
+                github.com/mercybydesign →
+              </a>
             </div>
             <div className="contact-row">
-              <span>Collaborations</span>
-              <span>Scholars, economists &amp; developers welcome</span>
+              <span>Contributor Guide</span>
+              <a
+                href={`${GITHUB_REPO}/blob/main/CONTRIBUTING.md`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Read CONTRIBUTING.md →
+              </a>
             </div>
             <div className="contact-row">
               <span>License</span>
@@ -60,16 +62,15 @@ export function AboutPage() {
         </section>
 
         <section className="about-card">
-          <h3>Get Involved &amp; Contribute</h3>
+          <h3>Contribute a Study or Fix</h3>
           <p className="about-body">
-            The fastest way to suggest a new study, add a country dataset, or
-            flag a Fiqh or methodology correction is through GitHub or direct
-            email.
+            Whether you want to publish a research brief, add a country dataset,
+            or build a new simulation, jump in on GitHub:
           </p>
 
           <div className="contact-links" style={{ marginTop: '16px' }}>
             <div className="contact-row">
-              <span>Publish a Study or Article</span>
+              <span>Publish a Study or Brief</span>
               <a
                 href={`${GITHUB_REPO}/issues/new?template=new-study.md`}
                 target="_blank"
@@ -96,12 +97,6 @@ export function AboutPage() {
                 rel="noreferrer"
               >
                 Report Correction →
-              </a>
-            </div>
-            <div className="contact-row">
-              <span>General Inquiries</span>
-              <a href="mailto:hello@mercybydesign.org?subject=MercyByDesign%20Inquiry">
-                Email hello@mercybydesign.org →
               </a>
             </div>
           </div>
